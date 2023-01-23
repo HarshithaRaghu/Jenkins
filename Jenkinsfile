@@ -1,5 +1,7 @@
 pipeline {
-    agent any 
+    agent { 
+        label 'ANSIBLE'
+    } 
 
     environment {                                       // Declaring at pipeline will allow all the stages to access this variable
         ENV_URL  = "pipeline.global.com"
@@ -39,6 +41,7 @@ pipeline {
                 echo "I am Stage One Step"
                 echo "ENV_URL is ${ENV_URL}"
                 sh "mvn --version"
+                sh "hostname"
             }
         }
 
