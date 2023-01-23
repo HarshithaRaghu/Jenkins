@@ -33,39 +33,41 @@ pipeline {
     
    
     stages {
-        stage('One') {
-            when { 
+        stage('Parallel-Stage')   {
+            parallel {
+                stage('One') {
+                  when { 
                         environment name: 'CHOICE', value: 'One'  
                     }
-            steps {
-                echo "I am Stage One Step"
-                echo "ENV_URL is ${ENV_URL}"
-                sh "mvn --version"
-                sh "hostname"
-            }
-        }
+                     steps {
+                        echo "I am Stage One Step"
+                        echo "ENV_URL is ${ENV_URL}"
+                        sh "mvn --version"
+                        sh "hostname"
+                        }
+                }
 
-        stage('Two') {
-             environment {                                       // Declaring at state will allow only that stage to access that variable
+                stage('Two') {
+                      environment {                                       // Declaring at state will allow only that stage to access that variable
                         ENV_URL = "stage2.global.com"
-                    }
+                      }
         
-            steps {
-                echo "I am Stage Two Step"
-                echo "ENV_URL is ${ENV_URL}"
+                   steps {
+                      echo "I am Stage Two Step"
+                      echo "ENV_URL is ${ENV_URL}"
                 
-            }
-        }
+                    }
+                }
 
-        stage('Three') {
-            steps {
-                sh '''
-                      echo Hello World
-                      echo Hai World
-                      echo I am using Pipeline Syntax Generator
-                      env
-                   '''
-            }
-        }
+                stage('Three') {
+                     steps {
+                       sh '''
+                             echo Hello World
+                             echo Hai World
+                             echo I am using Pipeline Syntax Generator
+                             env
+                         '''
+                    }
+                    }    }
     }
 }
