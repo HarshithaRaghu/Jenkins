@@ -44,6 +44,7 @@ pipeline {
                         echo "ENV_URL is ${ENV_URL}"
                         sh "mvn --version"
                         sh "hostname"
+                        sh "sleep 300"
                         }
                 }
 
@@ -55,6 +56,7 @@ pipeline {
                    steps {
                       echo "I am Stage Two Step"
                       echo "ENV_URL is ${ENV_URL}"
+                      sh "sleep 300"
                 
                     }
                 }
@@ -65,6 +67,7 @@ pipeline {
                              echo Hello World
                              echo Hai World
                              echo I am using Pipeline Syntax Generator
+                             sleep 300
                              env
                          '''
                     }
