@@ -20,7 +20,11 @@ pipeline {
 
         stage('Three') {
             steps {
-                echo "I am Stage Three Step"
+                sh '''
+                echo Hello World
+                echo Hai World
+                echo I am using Pipeline Syntax Generator
+                '''
             }
         }
     }
