@@ -26,7 +26,7 @@ pipeline {
     }
     
     tools {
-        maven 'mvn-381' 
+        maven 'mvn-387' 
     }
     
    
@@ -35,7 +35,7 @@ pipeline {
             steps {
                 echo "I am Stage One Step"
                 echo "ENV_URL is ${ENV_URL}"
-                
+                sh "mvn --version"
             }
         }
 
