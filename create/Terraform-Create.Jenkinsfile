@@ -17,8 +17,7 @@ pipeline {
             }
         }
 
-    stage('DB-ALB') {
-            parallel {
+    
                 stage('Terraform Create Databases') {
                     steps {
                         git branch: 'main', url: 'https://github.com/HarshithaRaghu/terraform-databases.git'
@@ -123,5 +122,4 @@ pipeline {
                      }
                 } 
 
-    }
-}
+    
