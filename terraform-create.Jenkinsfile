@@ -37,10 +37,9 @@ pipeline {
                         sh "terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve"
                     }
                 }
-            }
-        }
-         
-         stage('Backend') {
+            
+        
+          stage('Backend') {
             parallel {
                stage('Creating-User') {
                    steps {
@@ -122,5 +121,6 @@ pipeline {
                          }
                      }
                 } 
-
+    }
+}    
     
